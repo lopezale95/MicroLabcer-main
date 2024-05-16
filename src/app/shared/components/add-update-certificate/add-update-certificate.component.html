@@ -1,0 +1,57 @@
+<app-header [isModal]="true" [title]="certificate? 'Actualizar Certificado': 'Agregar Certificado'"></app-header>
+<ion-content>
+    <form [formGroup]="form" class="ion-padding ion-text-center" (ngSubmit)="submit()" (keypress.enter)="submit()">
+        
+      <!--====Si existe una imagen -->
+        <ion-avatar *ngIf="form.value.doc">
+            <ion-icon class="image-icon" name="document-outline"></ion-icon>
+        </ion-avatar>
+
+         <!--====Si no existe una imagen -->
+        <ion-icon class="image-icon" *ngIf="!form.value.doc"  name="document-attach-outline"></ion-icon>
+        <br>
+
+        
+        <!--====Seleccionar un archivo -->
+        <ion-button (click)="selectFile()" mode="ios" size="small" shape="round">
+          Seleccionar archivo PDF
+        </ion-button>
+
+
+        <!--=========Serial============-->
+        <app-custom-input 
+        autocomplete="serial"
+        icon="barcode-outline"
+        [control]="form.controls.serial"
+        type="text"
+        label="Serial"
+        ></app-custom-input>
+    
+        <div class="validators" *ngIf="form.controls.serial.errors && form.controls.serial.touched">
+          <div *ngIf="form.controls.serial.errors?.['required']">Este campo es requerido</div>
+          <div *ngIf="form.controls.serial.errors?.['minlenght']">El serial debe tener almenos 3 caracteres</div>
+        </div>
+        
+        <!--=========Customer============-->
+        <app-custom-input 
+        autocomplete="customer"
+        icon="people-outline"
+        [control]="form.controls.customer"
+        type="text"
+        label="Cliente"
+        ></app-custom-input>
+    
+        <div class="validators" *ngIf="form.controls.customer.errors && form.controls.customer.touched">
+          <div *ngIf="form.controls.customer.errors?.['required']">Este campo es requerido</div>
+          <div *ngIf="form.controls.customer.errors?.['minlenght']">El nombre del cliente debe tener almenos 3 caracteres</div>
+        </div>
+        
+
+        <ion-button  mode="ios" class="ion-margin" type="submit" [disabled]="form.invalid" color="dark">
+          {{certificate? 'Actualizar Certificado': 'Agregar Certificado'}}
+          <ion-icon slot="end" name="cloud-upload-outline"></ion-icon>
+        </ion-button>
+    
+    
+      </form>
+</ion-content>

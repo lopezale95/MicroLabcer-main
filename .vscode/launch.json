@@ -1,0 +1,23 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Open app.component.html",
+            "file": "c:\\Users\\Alejandro Lopez\\Desktop\\MicroLab\\src\\app\\app.component.html"
+        },
+        {
+            "name": "SWA: Run MicroLab",
+            "request": "launch",
+            "type": "pwa-chrome",
+            "url": "http://localhost:4280",
+            "preLaunchTask": "swa: start MicroLab",
+            "webRoot": "${workspaceFolder}/",
+            "timeout": 30000
+        }
+    ]
+}
