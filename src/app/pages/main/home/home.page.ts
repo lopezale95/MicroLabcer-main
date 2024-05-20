@@ -27,6 +27,7 @@ export class HomePage implements OnInit {
   image: string = 'assets/background.jpg';
   certificates:Certificate[]=[];
   loading: boolean=false;
+  pdf: string = '/assets/PDF.png';
 
   ngOnInit() {}
 
@@ -146,9 +147,11 @@ async downloadCertificate(certificate: Certificate) {
   const fileName = `certificate_${certificate.serial}.pdf`; // Nombre del archivo
 
   try {
-    const response = await fetch(docUrl);
+    // Descarga el archivo como un blob
+    const response = await fetch(docUrl, { mode: 'cors' }); 
     const data = await response.blob();
 
+    // Escribe el archivo en el sistema de archivos del dispositivo
     await Filesystem.writeFile({
       path: fileName,
       data: data,

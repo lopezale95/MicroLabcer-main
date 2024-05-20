@@ -9,8 +9,8 @@
   <ion-list *ngIf="!loading" class="transparent-list">
     <ion-item-sliding class="product-item transparent-list" *ngFor="let c of certificates">
       <ion-item>
-        <ion-avatar slot="start">
-          <ion-icon class="image-icon" name="document-outline"></ion-icon>
+        <ion-avatar padding slot="start">
+          <img class="small-image" [src]="pdf" alt="PDF">
         </ion-avatar>
         <ion-label>
           <div class="serial">{{ c.serial }}</div>

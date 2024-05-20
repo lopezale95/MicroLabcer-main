@@ -25,7 +25,7 @@ export class AddUpdateCertificateComponent  implements OnInit {
 
   firebaseSvc = inject(FirebaseService);
   UtilsSvc = inject(UtilsService);
-
+  pdf: string = '/assets/PDF.png';
   user = {} as User;
 
   image:any;
